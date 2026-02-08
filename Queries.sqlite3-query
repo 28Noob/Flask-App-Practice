@@ -1,0 +1,43 @@
+-- database: ./database.db
+SELECT * FROM Makers;
+INSERT INTO Bikes (Model,TopSpeed,Cost,Description) VALUES
+('MT-03',108,5300,'Yamaha MT-03 is a lightweight naked motorcycle with a 321cc parallel-twin engine, agile handling, aggressive styling, and upright ergonomics, ideal for urban riding and beginners.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('MT-07', 133, 7600, 'A torquey middleweight naked bike with a 689cc parallel-twin engine, upright riding position, responsive throttle, and agile handling, making it great for city rides and weekend fun.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('R7', 143, 9000, 'A sporty supersport motorcycle featuring a lightweight chassis, aggressive ergonomics, and a 689cc engine tuned for strong midrange power and precise cornering performance.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('CB500F', 118, 6800, 'A versatile naked motorcycle with a smooth 471cc parallel-twin engine, comfortable ergonomics, predictable handling, and solid fuel efficiency for daily commuting.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('CBR650R', 149, 9800, 'A sporty middleweight with a 649cc inline-four engine, aerodynamic fairings, refined suspension, and a balance of everyday usability and exciting high-rev performance.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('GSX-8S', 137, 8200, 'A modern naked bike powered by a 776cc parallel-twin engine, offering strong low-end torque, sharp styling, advanced electronics, and stable, confidence-inspiring handling.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('SV650', 130, 7500, 'A lightweight and friendly naked motorcycle with a 645cc V-twin engine, smooth power delivery, relaxed ergonomics, and excellent balance for both new and experienced riders.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('Ninja 400', 118, 5600, 'A lightweight sport bike with a 399cc parallel-twin engine, agile handling, aggressive styling, and approachable power that makes it ideal for beginners and track days.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('Z650', 130, 7900, 'A sharp-looking naked motorcycle featuring a 649cc parallel-twin engine, comfortable upright ergonomics, responsive throttle, and a strong blend of performance and practicality.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('MT-09', 149, 10500, 'A high-performance naked bike with an 890cc triple engine, explosive acceleration, advanced rider aids, and aggressive styling designed for thrill-seekers and street riding.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('XSR700', 130, 8800, 'A retro-inspired motorcycle combining classic styling with a modern 689cc parallel-twin engine, lightweight frame, upright ergonomics, and smooth, enjoyable performance.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('CB650R', 146, 9200, 'A modern neo-sports café motorcycle with a 649cc inline-four engine, refined suspension, upright ergonomics, and a smooth powerband suited for urban and highway riding.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('GSX-S750', 144, 8900, 'A naked sport bike powered by a 749cc inline-four engine, delivering strong acceleration, stable handling, aggressive styling, and a comfortable yet sporty riding position.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('Ninja 650', 131, 7800, 'A versatile sport bike with a 649cc parallel-twin engine, comfortable ergonomics, smooth power delivery, and a balance of everyday usability and sporty character.');
+INSERT INTO Bikes (Model, TopSpeed, Cost, Description) VALUES
+('Z900', 155, 9500, 'A powerful naked motorcycle featuring a 948cc inline-four engine, strong midrange torque, sharp styling, stable chassis, and an exciting yet controllable riding experience.');
+
+
+--Select all bikes
+SELECT * FROM Bikes;
+--Select all bikes and their maker
+SELECT Makers.Name,Bikes.Model FROM Bikes
+JOIN Makers ON Makers.MakerID=Bikes.MakerID;
+--Select all bikes from one maker
+SELECT Bikes.Model FROM Bikes
+JOIN Makers ON Makers.MakerID=Bikes.MakerID
+WHERE Makers.Name="Suzuki";
