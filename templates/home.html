@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- Index (home) page -->
+ <!-- 3 column grid -->
+  <div class="three-column">
+    {% for bike in results %}
+    <a href="{{ url_for('bike',id=bike[0]) }}">
+      <div class="w3-card-4">
+        <!-- Motorbike name then motorbike image -->
+        <h1 style="text-align: center;">{{ bike[1] }} {{ bike[2] }}</h1>
+        <img src="{{ bike[3]}}" alt="{{ bike[2] }}">
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+{% endblock %}
