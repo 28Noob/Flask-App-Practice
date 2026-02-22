@@ -16,6 +16,9 @@
     <!-- Navbar layout for extension -->
     <nav class="w3-bar w3-blue-grey">
         <a href="/" class="w3-bar-item w3-button">Home</a>
+        {% for maker in makers %}
+            <a href="/makers/{{ maker[0] }}" class="w3-bar-item w3-button">{{ maker[1] }}</a>
+        {% endfor %}
     </nav>
     {% block body %}
     {% endblock %}

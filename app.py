@@ -32,17 +32,42 @@ def home():
             FROM Bikes
             JOIN Makers ON Makers.MakerID=Bikes.MakerID;"""
     results = query_db(sql)
-    return render_template("home.html",results=results)
+
+    # Unique manufacturers (Name and ID)
+    sql_makers = "SELECT MakerID, Name FROM Makers"
+    makers = query_db(sql_makers)
+
+    return render_template("home.html",results=results, makers=makers)
 
 @app.route("/bike/<int:id>")
 def bike(id):
      #Only one bike from its ID
-     sql = """SELECT *
+     sql = """
+        SELECT *
         FROM Bikes
         JOIN Makers ON Makers.MakerID=Bikes.MakerID
         WHERE Bikes.BikeID = ?;"""
      result = query_db(sql,(id,),True)
-     return render_template("bike.html", bike=result)
+
+     # Manufacturer buttons show in nav bar after clicking a card
+     sql_makers = "SELECT MakerID, Name FROM Makers"
+     makers = query_db(sql_makers)
+     return render_template("bike.html", bike=result, makers=makers)
+
+@app.route("/makers/<int:makerid>")
+def makers(makerid):
+    #Only the bikes from a certain manufacturer
+    sql = """
+        SELECT Bikes.BikeID, Makers.Name, Bikes.Model, Bikes.ImageURL
+        FROM Bikes
+        JOIN Makers ON Makers.MakerID = Bikes.MakerID
+        WHERE Makers.MakerID = ?;"""
+    results = query_db(sql, (makerid,))
+
+    # Makers on nav bar
+    sql_makers = "SELECT MakerID, Name FROM Makers"
+    makers = query_db(sql_makers)
+    return render_template("home.html", results=results, makers=makers)
 
 if __name__ == "__main__":
     app.run(debug=True)

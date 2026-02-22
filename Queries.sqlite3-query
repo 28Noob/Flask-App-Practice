@@ -40,7 +40,7 @@ JOIN Makers ON Makers.MakerID=Bikes.MakerID;
 --Select all bikes from one maker
 SELECT Bikes.Model FROM Bikes
 JOIN Makers ON Makers.MakerID=Bikes.MakerID
-WHERE Makers.Name="Suzuki";
+WHERE Makers.Name="?";
 --Only the bike's ID, maker, model, and image URL
 SELECT Bikes.BikeID,Makers.Name,Bikes.Model,Bikes.ImageURL
 FROM Bikes
