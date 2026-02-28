@@ -1,4 +1,4 @@
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request
 import sqlite3
 
 DATABASE = 'database.db'
@@ -37,7 +37,7 @@ def home():
     sql_makers = "SELECT MakerID, Name FROM Makers"
     makers = query_db(sql_makers)
 
-    return render_template("home.html",results=results, makers=makers)
+    return render_template("home.html",results=results, makers=makers, request=request)
 
 @app.route("/bike/<int:id>")
 def bike(id):
@@ -52,7 +52,7 @@ def bike(id):
      # Manufacturer buttons show in nav bar after clicking a card
      sql_makers = "SELECT MakerID, Name FROM Makers"
      makers = query_db(sql_makers)
-     return render_template("bike.html", bike=result, makers=makers)
+     return render_template("bike.html", bike=result, makers=makers, request=request)
 
 @app.route("/makers/<int:makerid>")
 def makers(makerid):
@@ -67,7 +67,7 @@ def makers(makerid):
     # Makers on nav bar
     sql_makers = "SELECT MakerID, Name FROM Makers"
     makers = query_db(sql_makers)
-    return render_template("home.html", results=results, makers=makers)
+    return render_template("home.html", results=results, makers=makers, request=request)
 
 if __name__ == "__main__":
     app.run(debug=True)

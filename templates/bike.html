@@ -3,14 +3,21 @@
 <!-- Only one bike -->
 <!-- Two column grid -->
 <div class="two-column">
-    <!-- Image on left -->
-    <img src="{{ bike[6]}}" alt="{{ bike[2] }}">
-    <!-- Information on the right -->
+    <!-- Information on left -->
     <div class="information">
-        <h1>Top Speed: {{ bike[3] }}mph</h1>
-        <h1>Cost: ${{ bike[4] }}</h1>
-        <h1 style="text-decoration: underline;">Description</h1>
-        <h3>{{ bike[5] }}</h3>
-    </div>
+    {% for maker in makers %}
+        {% if maker[0] == bike[1] %}
+            <h1 style="text-decoration: underline;"><strong>{{ maker[1] }} {{ bike[2] }}</strong></h1>
+        {% endif %}
+    {% endfor %}
+    <h2 style="text-decoration: underline;">Description</h2>
+    <h4>{{ bike[5] }}</h4>
+    <h2 style="text-decoration: underline;">Statistics</h2>
+    <h3>- Top Speed: <em>{{ bike[3] }}mp/h</em></h3>
+    <h3>- Cost: <em>${{ bike[4] }}</em></h3>
+    <hr>
+</div>
+    <!-- Image on the right -->
+    <img src="{{ bike[6]}}" alt="{{ bike[2] }}">
 </div>
 {% endblock%}
